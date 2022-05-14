@@ -40,6 +40,7 @@ def start_game():
     while True:
         guess = get_user_guess()
         evaluate_guess(guess)
+        show_hangman_progress()
 
 def evaluate_guess(guess):
     global CORRECT_WORD
@@ -59,7 +60,9 @@ def get_user_guess():
 
 def show_hangman_progress():
     global HANGMAN_DISPLAY
-    for line in HANGMAN_DISPLAY:
-        print(line)
-show_hangman_progress()
+    global INCORRECT_GUESSES
+    for number in range(0, INCORRECT_GUESSES):
+        print(HANGMAN_DISPLAY[number])
+
+
 start_game()
