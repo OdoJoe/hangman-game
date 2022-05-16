@@ -8,7 +8,11 @@ import os
 #list of possible game answers
 POSSIBLE_WORDS = ['first', 'second', 'third']
 
-#hangman ascii image credit: https://ascii.co.uk/art/hangman
+"""
+hangman ascii image credit: https://ascii.co.uk/art/hangman
+
+"""
+
 HANGMAN_DISPLAY = [
     ' ___________.._______',
     '| .__________))______|',
@@ -115,14 +119,17 @@ def show_hangman_progress():
     global CORRECT_WORD
 
     clear_screen()
-    padding = 0
+    padding = 1
     
+    #number of lines of hangman image to display for every wrong guess
+    hangman_increment = 3
+
     #draw relevant part from hangman image
-    for number in range(0, INCORRECT_GUESSES * 3):
+    for number in range(0, INCORRECT_GUESSES * hangman_increment):
         print(HANGMAN_DISPLAY[number])
 
     #for each undisplayed part from the hangman image print new line
-    for num in range(INCORRECT_GUESSES *3, len(HANGMAN_DISPLAY) + padding):
+    for num in range(INCORRECT_GUESSES * hangman_increment, len(HANGMAN_DISPLAY) + padding):
         print('\r')
 
     word_progress = '\t'
