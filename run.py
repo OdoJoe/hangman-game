@@ -30,10 +30,8 @@ HANGMAN_DISPLAY = [
     '| |         / | | \\',
     '\"\"\"\"\"\"\"\"\"\"|_`-\' `-\' |\"\"\"|',
     '|\"|\"\"\"\"\"\"\"\\ \\       \'\"|\"|',
-    '| |        \\ \\        | |',
-    ': :         \\ \\       : :',
-    '. .          `\'       . .'
-]
+    '| |        \\ \\        | |'
+    ]
 
 #used to record the number of incorrect guesses
 INCORRECT_GUESSES = 0
@@ -43,6 +41,9 @@ CORRECT_WORD = ''
 
 #used to record the number of guesses
 GUESS_COUNTER = 0
+
+#used to record the actual guesses the user makes
+USER_GUESSES = ''
 
 """
 initialize game start
@@ -61,8 +62,9 @@ print(CORRECT_WORD)
 start game function
 """
 def start_game():
+    global USER_GUESSES
     clear_screen()
-
+    
     global CORRECT_WORD
     initialize()
     show_hangman_progress()
@@ -90,6 +92,7 @@ alphabetic letter is entered or the command 'exit' is typed
 """
 def get_user_guess():
     global GUESS_COUNTER
+    global USER_GUESSES
     GUESS_COUNTER = GUESS_COUNTER + 1
     guess = input('Enter Guess #' + str(GUESS_COUNTER)+ '\n')
     
@@ -99,25 +102,38 @@ def get_user_guess():
 
     if guess == 'exit':
         exit()
+    USER_GUESSES = USER_GUESSES + guess
     return guess
-    
+
 """
 Draws hangman image
 """
 def show_hangman_progress():
     global HANGMAN_DISPLAY
     global INCORRECT_GUESSES
+    global USER_GUESSES
+    global CORRECT_WORD
 
     clear_screen()
-    padding = 3
+    padding = 0
     
     #draw relevant part from hangman image
-    for number in range(0, INCORRECT_GUESSES):
+    for number in range(0, INCORRECT_GUESSES * 3):
         print(HANGMAN_DISPLAY[number])
 
     #for each undisplayed part from the hangman image print new line
-    for num in range(INCORRECT_GUESSES, len(HANGMAN_DISPLAY) + padding):
+    for num in range(INCORRECT_GUESSES *3, len(HANGMAN_DISPLAY) + padding):
         print('\r')
+
+    word_progress = '\t'
+    for letter in CORRECT_WORD:
+        if letter in USER_GUESSES:
+            word_progress = word_progress + letter
+        else:
+            word_progress = word_progress + '-'
+    print(word_progress)
+    print('\r')
+
     
 """
 clears console window
