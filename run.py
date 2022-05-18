@@ -6,13 +6,10 @@ import os
   
 
 #list of possible game answers
-POSSIBLE_WORDS = ['first', 'second', 'third']
+POSSIBLE_WORDS = ['meter', 'extravaganza', 'cinema', 'brilliance', 'ambulance', 'languish', 'berate', 'fallout', 'command', 'manager', 'jurassic']
 
-"""
-hangman ascii image credit: https://ascii.co.uk/art/hangman
 
-"""
-
+#hangman ascii image credit: https://ascii.co.uk/art/hangman
 HANGMAN_DISPLAY = [
     ' ___________.._______',
     '| .__________))______|',
@@ -49,21 +46,27 @@ GUESS_COUNTER = 0
 #used to record the actual guesses the user makes
 USER_GUESSES = ''
 
+#number of lines of hangman image to display for every wrong guess
+HANGMAN_INCREMENT = 3
+
 """
 initialize game start
+1. select random word from a list of possible words
+2. convert word to uppercase to prevent user issues with capital letters
 
 """
 def initialize():
     global CORRECT_WORD
 
     n = random.randint(0, 2)
-    CORRECT_WORD = POSSIBLE_WORDS[n]
+    CORRECT_WORD = POSSIBLE_WORDS[n].upper()
 
 
 print(CORRECT_WORD)
 
 """
-start game function
+start game function and loop
+until game is over
 """
 def start_game():
     global USER_GUESSES
@@ -72,11 +75,46 @@ def start_game():
     global CORRECT_WORD
     initialize()
     show_hangman_progress()
-    print(CORRECT_WORD)
-    while True:
+    game_over = False
+    while not game_over:
         guess = get_user_guess()
         evaluate_guess(guess)
         show_hangman_progress()
+        game_over = check_if_game_over()
+
+"""
+function to check if the user has either 
+gotten the word correct or
+run out of guesses
+"""
+def check_if_game_over():
+    global INCORRECT_GUESSES, HANGMAN_INCREMENT, HANGMAN_DISPLAY
+
+    game_over = False
+    #if we have displayed the entire hangman image, the user has run out of guesses
+    if (INCORRECT_GUESSES * HANGMAN_INCREMENT) >= len(HANGMAN_DISPLAY):
+        game_over = True
+        show_game_over(False)
+    #if there are no more '-' left in the word progress, the user has won
+    else:
+        test = get_word_progress()
+        if '-' not in test:
+            show_game_over(True)
+            game_over = True
+
+    return game_over
+    
+
+"""
+display correct end game response
+"""
+def show_game_over(did_user_win):
+    clear_screen()
+    if did_user_win:
+        print('Well Done')
+    else:
+        print('Tough Luck, try again')
+
 
 """
 validate user's guess
@@ -84,6 +122,7 @@ validate user's guess
 def evaluate_guess(guess):
     global CORRECT_WORD
     global INCORRECT_GUESSES
+
     if guess in CORRECT_WORD:
         print('correct')
     else:
@@ -106,42 +145,53 @@ def get_user_guess():
 
     if guess == 'exit':
         exit()
-    USER_GUESSES = USER_GUESSES + guess
-    return guess
+    USER_GUESSES = USER_GUESSES + guess.upper()
+    return guess.upper()
 
 """
-Draws hangman image
+draws hangman image
 """
 def show_hangman_progress():
     global HANGMAN_DISPLAY
     global INCORRECT_GUESSES
     global USER_GUESSES
     global CORRECT_WORD
+    global HANGMAN_INCREMENT
 
     clear_screen()
     padding = 1
     
-    #number of lines of hangman image to display for every wrong guess
-    hangman_increment = 3
 
     #draw relevant part from hangman image
-    for number in range(0, INCORRECT_GUESSES * hangman_increment):
+    for number in range(0, INCORRECT_GUESSES * HANGMAN_INCREMENT):
         print(HANGMAN_DISPLAY[number])
 
     #for each undisplayed part from the hangman image print new line
-    for num in range(INCORRECT_GUESSES * hangman_increment, len(HANGMAN_DISPLAY) + padding):
+    for num in range(INCORRECT_GUESSES * HANGMAN_INCREMENT, len(HANGMAN_DISPLAY) + padding):
         print('\r')
 
+
+    word_progress = get_word_progress()
+    print(word_progress)
+    print('\r')
+
+"""
+populates a string of '-' with the 
+user's correct guesses. This will 
+be used if there are no more '-' left to 
+display end game victory message
+"""
+def get_word_progress():
     word_progress = '\t'
     for letter in CORRECT_WORD:
         if letter in USER_GUESSES:
             word_progress = word_progress + letter
         else:
             word_progress = word_progress + '-'
-    print(word_progress)
-    print('\r')
 
-    
+    return word_progress
+
+
 """
 clears console window
 credit: https://www.geeksforgeeks.org/clear-screen-python/
