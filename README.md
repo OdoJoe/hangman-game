@@ -41,7 +41,7 @@ The code was manually tested using the following:
 * No bugs were discovered during testing
 
 # Validator Testing
-* PEP8 no returned from the PEP8online.com validator
+* PEP8 no errors returned from the PEP8online.com validator
 
 # Depolyment
 The project was deployed using the Code Institutes mock terminal for Heroku.

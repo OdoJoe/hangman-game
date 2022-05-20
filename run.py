@@ -10,7 +10,6 @@ POSSIBLE_WORDS = ['meter', 'extravaganza', 'cinema', 'brilliance', 'ambulance',
                   'languish', 'berate', 'fallout', 'command', 'manager',
                   'jurassic']
 
-
 # hangman ascii image credit: https://ascii.co.uk/art/hangman
 HANGMAN_DISPLAY = [
     ' ___________.._______',
