@@ -39,16 +39,12 @@ HANGMAN_DISPLAY = [
 # number of lines of hangman image to display for every wrong guess
 HANGMAN_INCREMENT = 3
 
-"""
-initialize game start
-1. select random word from a list of possible words
-2. convert word to uppercase to prevent user issues with capital letters
-
-"""
-
 
 def initialize():
-    """ Initialize
+    """
+    Initialize game start
+    1. select random word from a list of possible words
+    2. convert word to uppercase to prevent user issues with capital letters
     """
     index = random.randint(0, 2)
     return POSSIBLE_WORDS[index].upper()
@@ -83,11 +79,10 @@ def start_game(user_guesses, guess_counter, incorrect_guesses):
 
 def check_if_game_over(incorrect_guesses, correct_word, user_guesses):
     """
-    function to check if the user has either 
+    function to check if the user has either
     gotten the word correct or
     run out of guesses
     """
-    # global INCORRECT_GUESSES, HANGMAN_INCREMENT, HANGMAN_DISPLAY
 
     game_over = False
     # if we have displayed the entire hangman image, the user has run out

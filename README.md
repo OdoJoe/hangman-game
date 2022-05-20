@@ -1,31 +1,62 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# HANGMAN Game
+Hangman is a Python terminal game which runs in the Code Institute mock terminal on Heroku.
 
-Welcome Joe O'Donohoe,
+Users can try to guess the letters to a randomly selected word from a list of eleven words. A wrong guess generates a section of the hangman. On successful completion of the game, users are notified with a 'Well Done' message alternatively on an unsuccessful turn users are notified with a 'Try Again' message.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+Try out the game: 
 
-## Reminders
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
 
-## Creating the Heroku app
+# How to play
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+On starting the game a random word will generate in the form of dashes equal to the letters length.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+The user will then guess a letter, tyoe the letter into the terminal and hit enter. If the guess is right the letter will occupy its correct dash in the word however if the guess is wrong a section of the hangman will generate.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+The user has seven wrong guesses before the hangman fully generates and ends the game.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+The user can select either lowercase or uppercase letters. A selection of a character or number will generate the following message: 'please only enter a letter (or type "exit" to quit)'
 
-Connect your GitHub repository and deploy as normal.
+The user will win the game successfully guessing the word before generting the hangman.
 
-## Constraints
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
 
------
-Happy coding!
+# Features
+* Randomly selected word from a list of eleven words.
+* Detailed hangman representation
+* The user has the ability to use uppercase or lowercase letters and the game will recognise either the letters correct positioning in the word or a wrong guess 
+* If the user selects a character or a number the following message displays: 'please only enter a letter (or type "exit" to quit)'
+
+
+# Data Model
+
+
+# Testing
+The code was manually tested using the following:
+* ran code through PEP 8 online with a positive result and no errors
+* Family and friends played the game a number of times and no bugs were discovered
+* Tested in the local terminal and the Heroku terminal
+
+# Bugs
+* No bugs were discovered during testing
+
+# Validator Testing
+* PEP8 no returned from the PEP8online.com validator
+
+# Depolyment
+The project was deployed using the Code Institutes mock terminal for Heroku.
+
+- ### <u>Steps for Deployment:</u>
+1. Fork or Clone this repository
+2. Create a new HEroku App
+3. Set the buildbacks to Python and Nodejs in that order
+4. Link the Heroku App to the repository
+5. Click on **Deploy**
+
+# Credits
+* Hangman ascii image credit: https://ascii.co.uk/art/hangman
+* Import OS from https://www.geeksforgeeks.org/clear-screen-python/ to clear the console screen
+* Code Institute Python Module content
+* W3 Schools for the Learn Python and Python Tutorials section
+* PEP8online.com
+* Gitpod, GitHUb and Heroku
