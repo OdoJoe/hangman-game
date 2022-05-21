@@ -29,16 +29,22 @@ The user will win the game successfully guessing the word before generting the h
 
 
 # Data Model
+The game organises data as follows:
+1. Python list of possible words
+2. Python list of the hangman image
+3. Constants are held at a global level
+4. All data is passed between functions in-parameters
+5. State is maintained by parameters passed between functions
 
 
 # Testing
 The code was manually tested using the following:
-* ran code through PEP 8 online with a positive result and no errors
+* Ran code through PEP 8 online with a positive result and no errors
 * Family and friends played the game a number of times and no bugs were discovered
 * Tested in the local terminal and the Heroku terminal
 
 # Bugs
-* No bugs were discovered during testing
+* Case sensitivity of user input issue discovered. I fixed this by using .upper() string function.
 
 # Validator Testing
 * PEP8 no errors returned from the PEP8online.com validator
@@ -48,7 +54,7 @@ The project was deployed using the Code Institutes mock terminal for Heroku.
 
 - ### <u>Steps for Deployment:</u>
 1. Fork or Clone this repository
-2. Create a new HEroku App
+2. Create a new Heroku App
 3. Set the buildbacks to Python and Nodejs in that order
 4. Link the Heroku App to the repository
 5. Click on **Deploy**
