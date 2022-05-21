@@ -5,7 +5,7 @@ Users can try to guess the letters to a randomly selected word from a list of el
 
 Try out the game: https://hangman-game-odojoe.herokuapp.com/
 
-
+![responsive design example on different devices](assets/img/responsive.png)
 
 # How to play
 
@@ -24,9 +24,15 @@ The user will win the game successfully guessing the word before generting the h
 # Features
 * Randomly-selected word from a list of eleven words.
 * Detailed hangman representation
+
+![hangman](assets/img/hangman_image.png)
 * The user has the ability to use uppercase or lowercase letters and the game will recognise either the letters correct positioning in the word or a wrong guess 
 * If the user selects a character or a number the following message displays: 'please only enter a letter (or type "exit" to quit)'
+
+![error message](assets/img/symbol_or_number_entry.png)
 * User can play the game as often as they wish using the retry option
+
+![retry](assets/img/retry.png)
 
 
 # Data Model
@@ -43,6 +49,9 @@ The code was manually tested using the following:
 * Ran code through PEP 8 online with a positive result and no errors
 * Family and friends played the game a number of times and no bugs were discovered
 * Tested in the local terminal and the Heroku terminal
+* Flow chart tested as follows:
+
+![hangman](assets/img/hangman-game-logic-chart.png)
 
 # Bugs
 * Case sensitivity of user input issue discovered. I fixed this by using .upper() string function.
@@ -50,6 +59,8 @@ The code was manually tested using the following:
 
 # Validator Testing
 * PEP8 no errors returned from the PEP8online.com validator
+
+![PEP8 validation](assets/img/pep8-validator-result.png)
 
 # Depolyment
 The project was deployed using the Code Institute's mock terminal for Heroku.
