@@ -109,6 +109,14 @@ def show_game_over(did_user_win):
     else:
         print('Tough Luck, try again')
 
+    again = ''
+    while again != 'y' and again != 'n':
+        again = input('Play Again (y, n)')
+
+    if again == 'y':
+        initialize()
+        start_game(user_guesses='', guess_counter=0, incorrect_guesses=0)
+
 
 def evaluate_guess(guess, correct_word, incorrect_guesses):
     """ validate user's guess
