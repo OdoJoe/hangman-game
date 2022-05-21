@@ -1,31 +1,32 @@
 # HANGMAN Game
 Hangman is a Python terminal game which runs in the Code Institute mock terminal on Heroku.
 
-Users can try to guess the letters to a randomly selected word from a list of eleven words. A wrong guess generates a section of the hangman. On successful completion of the game, users are notified with a 'Well Done' message alternatively on an unsuccessful turn users are notified with a 'Try Again' message.
+Users can try to guess the letters to a randomly selected word from a list of eleven words. A wrong guess generates a section of the hangman. On successful completion of the game, users are notified with a 'Well Done' message. Alternatively on an unsuccessful turn users are notified with a 'Try Again' message.
 
-Try out the game: 
+Try out the game: https://hangman-game-odojoe.herokuapp.com/
 
 
 
 # How to play
 
-On starting the game a random word will generate in the form of dashes equal to the letters length.
+On starting the game a random word will generate in the form of dashes equal to the word length.
 
-The user will then guess a letter, tyoe the letter into the terminal and hit enter. If the guess is right the letter will occupy its correct dash in the word however if the guess is wrong a section of the hangman will generate.
+The user will then guess a letter, type the letter into the terminal and hit enter. If the guess is right the letter will occupy its correct position in the word. However, if the guess is wrong a section of the hangman will generate.
 
 The user has seven wrong guesses before the hangman fully generates and ends the game.
 
-The user can select either lowercase or uppercase letters. A selection of a character or number will generate the following message: 'please only enter a letter (or type "exit" to quit)'
+The user can select either lowercase or uppercase letters. A selection of a symbol or number will generate the following message: 'please only enter a letter (or type "exit" to quit)'
 
 The user will win the game successfully guessing the word before generting the hangman.
 
 
 
 # Features
-* Randomly selected word from a list of eleven words.
+* Randomly-selected word from a list of eleven words.
 * Detailed hangman representation
 * The user has the ability to use uppercase or lowercase letters and the game will recognise either the letters correct positioning in the word or a wrong guess 
 * If the user selects a character or a number the following message displays: 'please only enter a letter (or type "exit" to quit)'
+* User can play the game as often as they wish using the retry option
 
 
 # Data Model
@@ -45,19 +46,20 @@ The code was manually tested using the following:
 
 # Bugs
 * Case sensitivity of user input issue discovered. I fixed this by using .upper() string function.
+* On the play again option a random key must be pressed twice. I can't yet find a solution to this bug therefore I add the following text as a work around: 'double press any key to start'
 
 # Validator Testing
 * PEP8 no errors returned from the PEP8online.com validator
 
 # Depolyment
-The project was deployed using the Code Institutes mock terminal for Heroku.
+The project was deployed using the Code Institute's mock terminal for Heroku.
 
 - ### <u>Steps for Deployment:</u>
 1. Fork or Clone this repository
 2. Create a new Heroku App
-3. Set the buildbacks to Python and Nodejs in that order
-4. Link the Heroku App to the repository
-5. Click on **Deploy**
+3. Add the buildbacks to Python and Nodejs in that order
+4. Link the Heroku App to the repository (using 'heroku git:remote -a hangman-game-odojoe')
+5. Deploy from github to Heroku (using 'git push heroku main')
 
 # Credits
 * Hangman ascii image credit: https://ascii.co.uk/art/hangman

@@ -45,6 +45,11 @@ def initialize():
     1. select random word from a list of possible words
     2. convert word to uppercase to prevent user issues with capital letters
     """
+    clear_screen()
+    print('Welcome to Hangman, try to guess ')
+    print('the correct letters before you run out of rope')
+    random_letter = input('double press any key to start')
+
     index = random.randint(0, 2)
     return POSSIBLE_WORDS[index].upper()
 
