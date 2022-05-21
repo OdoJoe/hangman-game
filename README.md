@@ -79,3 +79,5 @@ The project was deployed using the Code Institute's mock terminal for Heroku.
 * W3 Schools for the Learn Python and Python Tutorials section
 * PEP8online.com
 * Gitpod, GitHUb and Heroku
+* Lucid Chart
+* My mentor for his invaluable advice
